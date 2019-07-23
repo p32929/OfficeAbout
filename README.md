@@ -1,5 +1,5 @@
 # OfficeAbout
-A simple about screen library created for Corporation
+A simple about screen library for Android for a Team of people
 
 ## Installation
 Add it in your root build.gradle at the end of repositories:
