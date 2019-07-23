@@ -1,6 +1,9 @@
 # OfficeAbout
 A simple about screen library for Android for a Team of people
 
+## Screenshot
+![Screenshot_2019-07-23-22-21-59](https://user-images.githubusercontent.com/6418354/61729396-e7f8fe80-ad98-11e9-9477-9c0b4f8943ba.png)
+
 ## Installation
 Add it in your root build.gradle at the end of repositories:
 ```
