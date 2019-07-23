@@ -19,15 +19,16 @@ dependencies {
 ```
 
 # Usage:
-## Initialize:
+* Initialize:
 OfficeAboutHelper officeAboutHelper = new OfficeAboutHelper(this, "https://raw.githubusercontent.com/p32929/SomeHowTosAndTexts/master/Office/OfficeInfo.json");
 
-## Show about activity:
+* Show about activity:
 officeAboutHelper.showAboutActivity();
 
 That's it. Simple as ever :)
 
-Your JSON should be somewhat like this:
+# JSON
+Your JSON data should be somewhat like this:
 ```
 {
     "officeLogoUrl": "http://pngimg.com/uploads/google/google_PNG19635.png",
