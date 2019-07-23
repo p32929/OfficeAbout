@@ -21,11 +21,11 @@ dependencies {
 # Usage:
 * Initialize:
 
-OfficeAboutHelper officeAboutHelper = new OfficeAboutHelper(this, "https://raw.githubusercontent.com/p32929/SomeHowTosAndTexts/master/Office/OfficeInfo.json");
+`OfficeAboutHelper officeAboutHelper = new OfficeAboutHelper(this, "https://raw.githubusercontent.com/p32929/SomeHowTosAndTexts/master/Office/OfficeInfo.json");`
 
 * Show about activity:
 
-officeAboutHelper.showAboutActivity();
+`officeAboutHelper.showAboutActivity();`
 
 That's it. Simple as ever :)
 
