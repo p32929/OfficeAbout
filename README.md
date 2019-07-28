@@ -73,6 +73,9 @@ Your JSON data should be somewhat like this:
 }
 ```
 
+And lastly, if you're using pro-guard, add these lines in your app `proguard-rules.pro` file:
+`-keep public class p32929.officeaboutlib.Models.** { *; }`
+
 # LICENSE
 ```
 MIT License
