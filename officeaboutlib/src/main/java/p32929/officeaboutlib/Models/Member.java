@@ -1,13 +1,17 @@
 package p32929.officeaboutlib.Models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-public class Member implements Parcelable {
+public class Member {
     String imageUrl;
     String name;
     String post;
     String contactUrl;
+
+    public Member(String imageUrl, String name, String post, String contactUrl) {
+        this.imageUrl = imageUrl;
+        this.name = name;
+        this.post = post;
+        this.contactUrl = contactUrl;
+    }
 
     public String getImageUrl() {
         return imageUrl;
@@ -40,37 +44,4 @@ public class Member implements Parcelable {
     public void setContactUrl(String contactUrl) {
         this.contactUrl = contactUrl;
     }
-
-    protected Member(Parcel in) {
-        imageUrl = in.readString();
-        name = in.readString();
-        post = in.readString();
-        contactUrl = in.readString();
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(imageUrl);
-        dest.writeString(name);
-        dest.writeString(post);
-        dest.writeString(contactUrl);
-    }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Member> CREATOR = new Parcelable.Creator<Member>() {
-        @Override
-        public Member createFromParcel(Parcel in) {
-            return new Member(in);
-        }
-
-        @Override
-        public Member[] newArray(int size) {
-            return new Member[size];
-        }
-    };
 }

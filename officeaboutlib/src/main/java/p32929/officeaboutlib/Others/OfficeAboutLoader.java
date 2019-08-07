@@ -6,8 +6,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.gson.Gson;
-
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -15,7 +14,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
+import p32929.officeaboutlib.Models.Member;
 import p32929.officeaboutlib.Models.OfficeInfo;
 
 public class OfficeAboutLoader extends AsyncTask<Void, Void, JSONObject> {
@@ -77,7 +78,31 @@ public class OfficeAboutLoader extends AsyncTask<Void, Void, JSONObject> {
 
         if (JSONObject != null) {
             try {
-                OfficeInfo officeInfo = new Gson().fromJson(JSONObject.toString(), OfficeInfo.class);
+
+                OfficeInfo officeInfo = new OfficeInfo(
+                        JSONObject.getString("officeLogoUrl"),
+                        JSONObject.getString("googlePlayUrl"),
+                        JSONObject.getString("facebookUrl"),
+                        JSONObject.getString("groupUrl"),
+                        JSONObject.getString("youtubeUrl"),
+                        JSONObject.getString("githubUrl"),
+                        JSONObject.getString("webUrl")
+                );
+
+                JSONArray array = JSONObject.getJSONArray("members");
+                ArrayList<Member> members = new ArrayList<>();
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject object = array.getJSONObject(i);
+
+                    members.add(new Member(
+                            object.getString("imageUrl"),
+                            object.getString("name"),
+                            object.getString("post"),
+                            object.getString("contactUrl")
+                    ));
+                }
+
+                officeInfo.setMembers(members);
                 listener.onJsonDataReceived(officeInfo);
             } catch (Exception e) {
                 e.printStackTrace();
