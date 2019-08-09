@@ -69,90 +69,80 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 members.addAll(officeInfo.getMembers());
                 adapter.notifyDataSetChanged();
 
-                if (officeInfo.getOfficeLogoUrl().isEmpty()) {
-                    imageViewOfficeLogo.setVisibility(View.GONE);
-                } else {
-                    imageViewOfficeLogo.setVisibility(View.VISIBLE);
-                    Picasso.get().load(officeInfo.getOfficeLogoUrl()).into(imageViewOfficeLogo);
-                }
+                Picasso.get().load(officeInfo.getOfficeLogoUrl()).into(imageViewOfficeLogo);
 
-                if (officeInfo.getOfficeLogoUrl().isEmpty()) {
-                    imageViewGooglePlay.setVisibility(View.GONE);
-                } else {
-                    imageViewGooglePlay.setVisibility(View.VISIBLE);
-                    imageViewGooglePlay.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                imageViewGooglePlay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isAvailable(officeInfo.getGooglePlayUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getGooglePlayUrl()));
                             startActivity(browse);
+                        } else {
+                            Toast.makeText(OfficeAboutActivity.this, "URL is not provided yet", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
 
-                if (officeInfo.getOfficeLogoUrl().isEmpty()) {
-                    imageViewFacebook.setVisibility(View.GONE);
-                } else {
-                    imageViewFacebook.setVisibility(View.VISIBLE);
-                    imageViewFacebook.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                imageViewFacebook.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isAvailable(officeInfo.getFacebookUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getFacebookUrl()));
                             startActivity(browse);
+                        } else {
+                            Toast.makeText(OfficeAboutActivity.this, "URL is not provided yet", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
 
-                if (officeInfo.getOfficeLogoUrl().isEmpty()) {
-                    imageViewGroup.setVisibility(View.GONE);
-                } else {
-                    imageViewGroup.setVisibility(View.VISIBLE);
-                    imageViewGroup.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                imageViewGroup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isAvailable(officeInfo.getGroupUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getGroupUrl()));
                             startActivity(browse);
+                        } else {
+                            Toast.makeText(OfficeAboutActivity.this, "URL is not provided yet", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
 
-                if (officeInfo.getOfficeLogoUrl().isEmpty()) {
-                    imageViewYoutube.setVisibility(View.GONE);
-                } else {
-                    imageViewYoutube.setVisibility(View.VISIBLE);
-                    imageViewYoutube.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                imageViewYoutube.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isAvailable(officeInfo.getYoutubeUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getYoutubeUrl()));
                             startActivity(browse);
+                        } else {
+                            Toast.makeText(OfficeAboutActivity.this, "URL is not provided yet", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
 
-                if (officeInfo.getOfficeLogoUrl().isEmpty()) {
-                    imageViewGithub.setVisibility(View.GONE);
-                } else {
-                    imageViewGithub.setVisibility(View.VISIBLE);
-                    imageViewGithub.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                imageViewGithub.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isAvailable(officeInfo.getGithubUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getGithubUrl()));
                             startActivity(browse);
+                        } else {
+                            Toast.makeText(OfficeAboutActivity.this, "URL is not provided yet", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
 
-                if (officeInfo.getOfficeLogoUrl().isEmpty()) {
-                    imageViewWeb.setVisibility(View.GONE);
-                } else {
-                    imageViewWeb.setVisibility(View.VISIBLE);
-                    imageViewWeb.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                imageViewWeb.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (isAvailable(officeInfo.getWebUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getWebUrl()));
                             startActivity(browse);
+                        } else {
+                            Toast.makeText(OfficeAboutActivity.this, "URL is not provided yet", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
+
 
                 swipeRefreshLayout.setRefreshing(false);
                 swipeRefreshLayout.setEnabled(false);
@@ -165,5 +155,17 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 finish();
             }
         }).execute();
+    }
+
+    private boolean isAvailable(String something) {
+        if (something == null) {
+            return false;
+        } else {
+            if (something.isEmpty()) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 }
