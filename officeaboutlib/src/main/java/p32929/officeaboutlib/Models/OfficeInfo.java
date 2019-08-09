@@ -1,8 +1,11 @@
 package p32929.officeaboutlib.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class OfficeInfo {
+public class OfficeInfo implements Parcelable {
     String officeLogoUrl;
     String googlePlayUrl;
     String facebookUrl;
@@ -76,24 +79,54 @@ public class OfficeInfo {
         this.members = members;
     }
 
-    public OfficeInfo(String officeLogoUrl, String googlePlayUrl, String facebookUrl, String groupUrl, String youtubeUrl, String githubUrl, String webUrl) {
-        this.officeLogoUrl = officeLogoUrl;
-        this.googlePlayUrl = googlePlayUrl;
-        this.facebookUrl = facebookUrl;
-        this.groupUrl = groupUrl;
-        this.youtubeUrl = youtubeUrl;
-        this.githubUrl = githubUrl;
-        this.webUrl = webUrl;
+    protected OfficeInfo(Parcel in) {
+        officeLogoUrl = in.readString();
+        googlePlayUrl = in.readString();
+        facebookUrl = in.readString();
+        groupUrl = in.readString();
+        youtubeUrl = in.readString();
+        githubUrl = in.readString();
+        webUrl = in.readString();
+        if (in.readByte() == 0x01) {
+            members = new ArrayList<Member>();
+            in.readList(members, Member.class.getClassLoader());
+        } else {
+            members = null;
+        }
     }
 
-    public OfficeInfo(String officeLogoUrl, String googlePlayUrl, String facebookUrl, String groupUrl, String youtubeUrl, String githubUrl, String webUrl, ArrayList<Member> members) {
-        this.officeLogoUrl = officeLogoUrl;
-        this.googlePlayUrl = googlePlayUrl;
-        this.facebookUrl = facebookUrl;
-        this.groupUrl = groupUrl;
-        this.youtubeUrl = youtubeUrl;
-        this.githubUrl = githubUrl;
-        this.webUrl = webUrl;
-        this.members = members;
+    @Override
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(officeLogoUrl);
+        dest.writeString(googlePlayUrl);
+        dest.writeString(facebookUrl);
+        dest.writeString(groupUrl);
+        dest.writeString(youtubeUrl);
+        dest.writeString(githubUrl);
+        dest.writeString(webUrl);
+        if (members == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(members);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<OfficeInfo> CREATOR = new Parcelable.Creator<OfficeInfo>() {
+        @Override
+        public OfficeInfo createFromParcel(Parcel in) {
+            return new OfficeInfo(in);
+        }
+
+        @Override
+        public OfficeInfo[] newArray(int size) {
+            return new OfficeInfo[size];
+        }
+    };
 }

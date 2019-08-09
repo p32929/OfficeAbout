@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/srl"
     android:layout_width="match_parent"
@@ -20,88 +19,82 @@
             android:orientation="vertical"
             android:visibility="visible">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:background="#FFF"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/officeLogoImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center">
 
                     <ImageView
-                        android:id="@+id/officeLogoImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="175dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/googlePlayLogo"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:gravity="center">
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_google_play_black_36dp"
+                        android:tint="#0097A7" />
 
-                        <ImageView
-                            android:id="@+id/googlePlayLogo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_google_play_black_36dp"
-                            android:tint="#0097A7" />
+                    <ImageView
+                        android:id="@+id/facebookLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_facebook_black_36dp"
+                        android:tint="#1976D2" />
 
-                        <ImageView
-                            android:id="@+id/facebookLogo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_facebook_black_36dp"
-                            android:tint="#1976D2" />
+                    <ImageView
+                        android:id="@+id/groupLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_account_group_black_36dp"
+                        android:tint="#FBC02D" />
 
-                        <ImageView
-                            android:id="@+id/groupLogo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_account_group_black_36dp"
-                            android:tint="#FBC02D" />
+                    <ImageView
+                        android:id="@+id/youtubeLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_youtube_black_36dp"
+                        android:tint="#D32F2F" />
 
-                        <ImageView
-                            android:id="@+id/youtubeLogo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_youtube_black_36dp"
-                            android:tint="#D32F2F" />
+                    <ImageView
+                        android:id="@+id/githubLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_github_circle_black_36dp"
+                        android:tint="#303F9F" />
 
-                        <ImageView
-                            android:id="@+id/githubLogo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_github_circle_black_36dp"
-                            android:tint="#303F9F" />
+                    <ImageView
+                        android:id="@+id/webLogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_web_black_36dp"
+                        android:tint="#388E3C" />
 
-                        <ImageView
-                            android:id="@+id/webLogo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ic_web_black_36dp"
-                            android:tint="#388E3C" />
-
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/officeAboutRecyclerView"
