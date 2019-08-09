@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import p32929.officeaboutlib.Adapters.AboutRecyclerviewAdapter;
 import p32929.officeaboutlib.Models.Member;
 import p32929.officeaboutlib.Models.OfficeInfo;
+import p32929.officeaboutlib.Others.GlobalMethods;
 import p32929.officeaboutlib.Others.MembersListener;
 import p32929.officeaboutlib.Others.OfficeAboutLoader;
 import p32929.officeaboutlib.R;
@@ -74,7 +75,7 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 imageViewGooglePlay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (isAvailable(officeInfo.getGooglePlayUrl())) {
+                        if (GlobalMethods.isAvailable(officeInfo.getGooglePlayUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getGooglePlayUrl()));
                             startActivity(browse);
                         } else {
@@ -86,7 +87,7 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 imageViewFacebook.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (isAvailable(officeInfo.getFacebookUrl())) {
+                        if (GlobalMethods.isAvailable(officeInfo.getFacebookUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getFacebookUrl()));
                             startActivity(browse);
                         } else {
@@ -98,7 +99,7 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 imageViewGroup.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (isAvailable(officeInfo.getGroupUrl())) {
+                        if (GlobalMethods.isAvailable(officeInfo.getGroupUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getGroupUrl()));
                             startActivity(browse);
                         } else {
@@ -110,7 +111,7 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 imageViewYoutube.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (isAvailable(officeInfo.getYoutubeUrl())) {
+                        if (GlobalMethods.isAvailable(officeInfo.getYoutubeUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getYoutubeUrl()));
                             startActivity(browse);
                         } else {
@@ -122,7 +123,7 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 imageViewGithub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (isAvailable(officeInfo.getGithubUrl())) {
+                        if (GlobalMethods.isAvailable(officeInfo.getGithubUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getGithubUrl()));
                             startActivity(browse);
                         } else {
@@ -134,7 +135,7 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 imageViewWeb.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (isAvailable(officeInfo.getWebUrl())) {
+                        if (GlobalMethods.isAvailable(officeInfo.getWebUrl())) {
                             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(officeInfo.getWebUrl()));
                             startActivity(browse);
                         } else {
@@ -155,17 +156,5 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 finish();
             }
         }).execute();
-    }
-
-    private boolean isAvailable(String something) {
-        if (something == null) {
-            return false;
-        } else {
-            if (something.isEmpty()) {
-                return false;
-            } else {
-                return true;
-            }
-        }
     }
 }

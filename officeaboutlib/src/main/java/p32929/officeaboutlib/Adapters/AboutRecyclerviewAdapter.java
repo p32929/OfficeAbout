@@ -49,11 +49,12 @@ public class AboutRecyclerviewAdapter extends RecyclerView.Adapter<AboutRecycler
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!member.getContactUrl().isEmpty()) {
+                if (member.getContactUrl().isEmpty()) {
+                    Toast.makeText(context, "" + member.getName() + " has no contact info", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(member.getContactUrl()));
                     context.startActivity(browse);
-                } else {
-                    Toast.makeText(context, "" + member.getName() + " has no contact info", Toast.LENGTH_SHORT).show();
                 }
             }
         });
