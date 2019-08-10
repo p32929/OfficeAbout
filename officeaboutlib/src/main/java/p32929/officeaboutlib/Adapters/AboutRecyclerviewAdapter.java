@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import p32929.officeaboutlib.Models.Member;
+import p32929.officeaboutlib.Others.GlobalMethods;
 import p32929.officeaboutlib.R;
 
 public class AboutRecyclerviewAdapter extends RecyclerView.Adapter<AboutRecyclerviewAdapter.ViewHolder> {
@@ -50,11 +51,14 @@ public class AboutRecyclerviewAdapter extends RecyclerView.Adapter<AboutRecycler
             @Override
             public void onClick(View view) {
                 if (member.getContactUrl().isEmpty()) {
-                    Toast.makeText(context, "" + member.getName() + " has no contact info", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(member.getContactUrl()));
-                    context.startActivity(browse);
+                    Toast.makeText(context, "" + member.getName() + " has added no contact info", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (member.getContactUrl().contains("facebook")) {
+                        context.startActivity(GlobalMethods.getFacebookIntent(context, member.getContactUrl()));
+                    } else {
+                        Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(member.getContactUrl()));
+                        context.startActivity(browse);
+                    }
                 }
             }
         });
