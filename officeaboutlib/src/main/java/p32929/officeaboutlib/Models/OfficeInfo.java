@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class OfficeInfo implements Parcelable {
     String officeLogoUrl;
     String googlePlayUrl;
-    String facebookUrl;
+    String facebookPageUrl;
+    String facebookPageID;
     String groupUrl;
     String youtubeUrl;
     String githubUrl;
@@ -31,12 +32,20 @@ public class OfficeInfo implements Parcelable {
         this.googlePlayUrl = googlePlayUrl;
     }
 
-    public String getFacebookUrl() {
-        return facebookUrl;
+    public String getFacebookPageUrl() {
+        return facebookPageUrl;
     }
 
-    public void setFacebookUrl(String facebookUrl) {
-        this.facebookUrl = facebookUrl;
+    public void setFacebookPageUrl(String facebookPageUrl) {
+        this.facebookPageUrl = facebookPageUrl;
+    }
+
+    public String getFacebookPageID() {
+        return facebookPageID;
+    }
+
+    public void setFacebookPageID(String facebookPageID) {
+        this.facebookPageID = facebookPageID;
     }
 
     public String getGroupUrl() {
@@ -82,7 +91,8 @@ public class OfficeInfo implements Parcelable {
     protected OfficeInfo(Parcel in) {
         officeLogoUrl = in.readString();
         googlePlayUrl = in.readString();
-        facebookUrl = in.readString();
+        facebookPageUrl = in.readString();
+        facebookPageID = in.readString();
         groupUrl = in.readString();
         youtubeUrl = in.readString();
         githubUrl = in.readString();
@@ -104,7 +114,8 @@ public class OfficeInfo implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(officeLogoUrl);
         dest.writeString(googlePlayUrl);
-        dest.writeString(facebookUrl);
+        dest.writeString(facebookPageUrl);
+        dest.writeString(facebookPageID);
         dest.writeString(groupUrl);
         dest.writeString(youtubeUrl);
         dest.writeString(githubUrl);

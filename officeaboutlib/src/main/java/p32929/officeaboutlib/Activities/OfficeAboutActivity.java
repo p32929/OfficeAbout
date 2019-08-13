@@ -87,8 +87,8 @@ public class OfficeAboutActivity extends AppCompatActivity {
                 imageViewFacebook.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (GlobalMethods.isAvailable(officeInfo.getFacebookUrl())) {
-                            startActivity(GlobalMethods.getFacebookIntent(OfficeAboutActivity.this, officeInfo.getFacebookUrl()));
+                        if (GlobalMethods.isAvailable(officeInfo.getFacebookPageUrl())) {
+                            startActivity(GlobalMethods.getFacebookPageIntent(OfficeAboutActivity.this, officeInfo));
                         } else {
                             Toast.makeText(OfficeAboutActivity.this, "URL is not provided yet", Toast.LENGTH_SHORT).show();
                         }

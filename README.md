@@ -39,7 +39,7 @@ Your JSON data should be somewhat like this:
 {
     "officeLogoUrl": "http://pngimg.com/uploads/google/google_PNG19635.png",
     "googlePlayUrl": "https://play.google.com/store/apps/developer?id=p32929",
-    "facebookUrl": "https://www.facebook.com/p32929",
+    "facebookPageUrl": "https://www.facebook.com/p32929",
     "groupUrl": "https://www.facebook.com/p32929",
     "youtubeUrl": "https://www.youtube.com/user/marquesbrownlee",
     "githubUrl": "http://github.com/p32929",
