@@ -18,7 +18,7 @@ allprojects {
 Add the dependency
 ```
 dependencies {
-     implementation 'com.github.p32929:OfficeAbout:1.0.0.6'
+     implementation 'com.github.p32929:OfficeAbout:1.0.0.7'
 }
 ```
 
