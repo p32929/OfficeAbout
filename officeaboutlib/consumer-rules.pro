@@ -1,0 +1,1 @@
+-keep public class p32929.officeaboutlib.Models.** { *; }

@@ -1,109 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/srl"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/officeAboutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    tools:context=".Activities.OfficeAboutActivity">
+    android:background="?attr/colorSurface"
+    android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/officeAboutToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/office_about_title" />
 
-        <LinearLayout
-            android:id="@+id/parentLL"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/officeAboutContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="visible">
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="#FFF"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="24dp">
 
-                <ImageView
-                    android:id="@+id/officeLogoImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="175dp"
-                    android:adjustViewBounds="true"
-                    android:layout_marginBottom="8dp"
-                    android:scaleType="centerInside" />
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
+                    style="?attr/materialCardViewFilledStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:gravity="center">
+                    android:layout_marginTop="8dp"
+                    app:cardBackgroundColor="?attr/colorSecondaryContainer">
 
-                    <ImageView
-                        android:id="@+id/googlePlayLogo"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_google_play_black_36dp"
-                        android:tint="#0097A7" />
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="20dp">
 
-                    <ImageView
-                        android:id="@+id/facebookLogo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_facebook_black_36dp"
-                        android:tint="#1976D2" />
+                        <ImageView
+                            android:id="@+id/officeLogoImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="96dp"
+                            android:layout_marginBottom="12dp"
+                            android:adjustViewBounds="true"
+                            android:importantForAccessibility="no"
+                            android:scaleType="fitCenter"
+                            android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/groupLogo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_account_group_black_36dp"
-                        android:tint="#FBC02D" />
+                        <TextView
+                            android:id="@+id/officeName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                            android:textColor="?attr/colorOnSecondaryContainer"
+                            android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/youtubeLogo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_youtube_black_36dp"
-                        android:tint="#D32F2F" />
+                        <TextView
+                            android:id="@+id/officeAbout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center"
+                            android:textAppearance="?attr/textAppearanceBodyMedium"
+                            android:textColor="?attr/colorOnSecondaryContainer"
+                            android:visibility="gone" />
 
-                    <ImageView
-                        android:id="@+id/githubLogo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_github_circle_black_36dp"
-                        android:tint="#303F9F" />
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/officeLinks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            app:chipSpacingHorizontal="8dp"
+                            app:singleLine="false" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                    <ImageView
-                        android:id="@+id/webLogo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_web_black_36dp"
-                        android:tint="#388E3C" />
+                <TextView
+                    android:id="@+id/officeTeamLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/office_about_team"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="?attr/colorPrimary" />
 
-
-                </LinearLayout>
-
+                <LinearLayout
+                    android:id="@+id/officeMembers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
             </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/officeAboutRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/officeAboutProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
 
+        <LinearLayout
+            android:id="@+id/officeAboutError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/office_about_error"
+                android:textAppearance="?attr/textAppearanceBodyLarge" />
+
+            <Button
+                android:id="@+id/officeAboutRetry"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/office_about_retry" />
         </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </FrameLayout>
+</LinearLayout>

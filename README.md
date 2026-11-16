@@ -1,99 +1,117 @@
-# Update!!!
-A newer, easier & better version of this library can be found here: https://github.com/p32929/MaterialOfficeAbout
-
 # OfficeAbout
 
-A drop-in "About us" screen for Android apps built by a team — company logo, social links and a member list, all filled from a JSON file you host. Two lines of code, no layout to write.
+A ready-made "About us" screen for Android apps made by a team. It shows your company name, logo, links and a card for every team member, all filled from one JSON file. You can host the JSON online and change the team without shipping an app update.
 
 ## Features
 
-- **JSON-driven** — update the team without shipping an app update
-- **Team member list** with photo, name, role and a contact link each
-- **Company links** built in: Play Store, Facebook page and group, YouTube, GitHub, website
-- **Two lines to integrate** — construct the helper, call `showAboutActivity()`
+1. **Team cards:** photo (or initials when there is no photo), name, role and a Contact button.
+2. **Company links** as chips: Google Play, Facebook page, community group, YouTube, GitHub and website. Links you leave empty are hidden.
+3. **JSON from a URL or a string:** load it from the web, or from an asset in your app.
+4. **Material 3, light and dark:** it follows the phone's dark mode, and you can give it your own colours.
+5. **Loading and error states** with a Try again button.
+6. **Small:** written in Kotlin with no image or JSON libraries. Works on Android 5.0 (API 21) and newer.
 
-## Screenshot
+## Screenshots
 
-<img src="https://user-images.githubusercontent.com/6418354/61729396-e7f8fe80-ad98-11e9-9477-9c0b4f8943ba.png" width="300">
+<img src="docs/screenshots/light.png" width="280"> <img src="docs/screenshots/dark.png" width="280">
 
-## Installation
-Add it in your root build.gradle at the end of repositories:
-```gradle
-allprojects {
-  repositories {
-    maven { url 'https://jitpack.io' }
-  }
+## Install
+
+1. Add JitPack to your repositories (in `settings.gradle.kts`):
+
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
 }
 ```
 
-Add the dependency
-```gradle
+2. Add the dependency:
+
+```kotlin
 dependencies {
-     implementation 'com.github.p32929:OfficeAbout:1.0.0.7'
+    implementation("com.github.p32929:OfficeAbout:2.0.0")
 }
 ```
 
 ## Usage
-* Initialize:
 
-`OfficeAboutHelper officeAboutHelper = new OfficeAboutHelper(this, "https://raw.githubusercontent.com/p32929/SomeHowTosAndTexts/master/Office/OfficeInfo.json");`
+Kotlin:
 
-* Show about activity:
+```kotlin
+// From a JSON file you host
+OfficeAboutHelper(this, "https://example.com/team.json").showAboutActivity()
 
-`officeAboutHelper.showAboutActivity();`
+// From a JSON string, for example an asset
+val json = assets.open("team.json").bufferedReader().use { it.readText() }
+OfficeAboutHelper.fromJson(this, json).showAboutActivity()
+```
 
-That's it. Simple as ever :)
+Java:
+
+```java
+new OfficeAboutHelper(this, "https://example.com/team.json").showAboutActivity();
+
+OfficeAboutHelper.fromJson(this, json).showAboutActivity();
+```
 
 ## JSON
-Your JSON data should be somewhat like this:
+
+Every field is optional. `officeName` and `about` are new in 2.0; the rest is the same as 1.x, so your old JSON still works.
+
 ```json
 {
-    "officeLogoUrl": "https://user-images.githubusercontent.com/6418354/62771043-1af00180-babe-11e9-8830-7904a358ccc0.png",
-    "googlePlayUrl": "https://play.google.com/store/apps/developer?id=Rich+IT",
-    "facebookPageUrl": "https://www.facebook.com/rich.it.ctg",
-    "facebookPageID": "104754327537968",
-    "groupUrl": "https://www.facebook.com/groups/518485748694084/",
-    "youtubeUrl": "https://www.youtube.com/user/marquesbrownlee",
-    "githubUrl": "http://github.com/p32929",
-    "webUrl": "https://p32929.github.io/Portfolio/",
-    "members": [
-        {
-            "imageUrl": "https://avatars1.githubusercontent.com/u/6418354?s=460&v=4",
-            "name": "Fayaz Bin Salam",
-            "post": "Founder & CEO",
-            "contactUrl": "https://www.facebook.com/p32929"
-        },
-        {
-            "imageUrl": "https://user-images.githubusercontent.com/6418354/62595278-92c3fd80-b8ff-11e9-89b1-8a4b0d3fbae4.jpg",
-            "name": "Arfatul Mowla Shuvo",
-            "post": "Software Developer",
-            "contactUrl": "https://www.facebook.com/mowla.shuvo"
-        },
-        {
-            "imageUrl": "https://user-images.githubusercontent.com/6418354/62595308-b25b2600-b8ff-11e9-86e1-5d58cb1a6cac.JPG",
-            "name": "Masrur Mehedi",
-            "post": "Software Developer",
-            "contactUrl": "https://www.facebook.com/masrorulhoque.mehedi.1"
-        },
-        {
-            "imageUrl": "https://user-images.githubusercontent.com/6418354/62595290-a0798300-b8ff-11e9-9b78-ea9262f4bf94.JPG",
-            "name": "Xenon",
-            "post": "Software Developer",
-            "contactUrl": "https://www.facebook.com/plabon.shuvo1"
-        },
-        {
-            "imageUrl": "https://user-images.githubusercontent.com/6418354/62595321-bdae5180-b8ff-11e9-8b44-3378b8a88ce3.jpg",
-            "name": "Misbah",
-            "post": "Software Developer",
-            "contactUrl": ""
-        }
-    ]
+  "officeName": "Pixel & Pine Studio",
+  "about": "A small team building friendly apps.",
+  "officeLogoUrl": "https://example.com/logo.png",
+  "googlePlayUrl": "https://play.google.com/store/apps/developer?id=Your+Name",
+  "facebookPageUrl": "https://www.facebook.com/yourpage",
+  "facebookPageID": "104754327537968",
+  "groupUrl": "https://www.facebook.com/groups/yourgroup/",
+  "youtubeUrl": "https://www.youtube.com/@yourchannel",
+  "githubUrl": "https://github.com/you",
+  "webUrl": "https://example.com",
+  "members": [
+    {
+      "imageUrl": "https://example.com/amara.jpg",
+      "name": "Amara Rahman",
+      "post": "Founder and CEO",
+      "contactUrl": "mailto:amara@example.com"
+    }
+  ]
 }
 ```
 
-And lastly, if you're using pro-guard, add these lines in your app `proguard-rules.pro` file:
+If `facebookPageID` is set and the Facebook app is installed, the Facebook chip opens the page in the app.
 
-`-keep public class p32929.officeaboutlib.Models.** { *; }`
+## Your own colours
+
+The screen uses the theme `Theme.OfficeAbout` (Material 3, DayNight). To use your colours, define a style with the same name in your app:
+
+```xml
+<style name="Theme.OfficeAbout" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="colorPrimary">@color/your_primary</item>
+</style>
+```
+
+The title and labels are normal string resources (`office_about_title`, `office_about_team`, `office_about_contact` and others), so you can change or translate them the same way.
+
+## Migrating from 1.x
+
+1. The two lines you used before still work: `new OfficeAboutHelper(context, url)` and `showAboutActivity()`.
+2. Your JSON still works without changes.
+3. The library now needs Android 5.0 (API 21) or newer, and an app built with a recent Android Gradle Plugin.
+4. `OfficeInfo` and `Member` are plain Kotlin classes now. They are no longer `Parcelable`, but their getters and setters have the same names.
+5. The internal classes `OfficeAboutLoader`, `MembersListener`, `GlobalMethods` and `AboutRecyclerviewAdapter` were removed.
+6. Picasso, Gson and CircleImageView are no longer pulled into your app.
+7. You no longer need a ProGuard rule; the library ships its own.
+
+## Sample app
+
+The `app` module opens the screen with a sample team from `app/src/main/assets/team.json`, or from a JSON URL.
 
 ## License
 

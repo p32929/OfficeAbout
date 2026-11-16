@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="p32929.officeaboutlib">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
     <application>
-        <activity android:name=".Activities.OfficeAboutActivity"></activity>
+        <activity
+            android:name=".Activities.OfficeAboutActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OfficeAbout" />
     </application>
 
 </manifest>

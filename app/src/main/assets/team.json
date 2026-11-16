@@ -1,0 +1,16 @@
+{
+  "officeName": "Pixel & Pine Studio",
+  "about": "A small team building friendly apps for Android and the web.",
+  "googlePlayUrl": "https://play.google.com/store",
+  "facebookPageUrl": "https://www.facebook.com",
+  "youtubeUrl": "https://www.youtube.com",
+  "githubUrl": "https://github.com/p32929",
+  "webUrl": "https://p32929.github.io",
+  "members": [
+    { "imageUrl": "", "name": "Amara Rahman", "post": "Founder and CEO", "contactUrl": "mailto:amara@example.com" },
+    { "imageUrl": "", "name": "Leo Martins", "post": "Android Developer", "contactUrl": "https://github.com" },
+    { "imageUrl": "", "name": "Nadia Karim", "post": "Product Designer", "contactUrl": "https://dribbble.com" },
+    { "imageUrl": "", "name": "Sam Okafor", "post": "Backend Developer", "contactUrl": "" },
+    { "imageUrl": "", "name": "Yuki Tanaka", "post": "QA Engineer", "contactUrl": "" }
+  ]
+}

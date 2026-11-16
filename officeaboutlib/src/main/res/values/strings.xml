@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">OfficeAboutLib</string>
+    <string name="office_about_title">About us</string>
+    <string name="office_about_team">Our team</string>
+    <string name="office_about_contact">Contact</string>
+    <string name="office_about_error">Couldn\'t load the team. Check your connection and try again.</string>
+    <string name="office_about_retry">Try again</string>
+    <string name="office_about_no_app">No app found to open this link</string>
+    <string name="office_about_play">Google Play</string>
+    <string name="office_about_facebook">Facebook</string>
+    <string name="office_about_group">Community</string>
+    <string name="office_about_youtube">YouTube</string>
+    <string name="office_about_github">GitHub</string>
+    <string name="office_about_web">Website</string>
 </resources>
